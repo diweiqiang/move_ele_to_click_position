@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        .container{
+            margin:10px auto;
+            width:500px;
+            height:500px;
+            border:1px solid black;
+            overflow: hidden;
+            background:#eee;
+            cursor: pointer;
+        }
+        .thing{
+            position: relative;
+            width:50px;
+            height:50px;
+            left: 100px;
+            top:200px;
+            border-radius: 50%;
+            background:yellowgreen;
+            transition:left 0.5s ease,top 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    click anywhere in the gray area
+</h1>
+<div class="container">
+    <div class="thing"></div>
+</div>
+
+<script>
+    var container=document.querySelector('.container');
+    var theThing=document.querySelector('.thing');
+
+    container.addEventListener('click',function (e) {
+        var xPos=e.clientX-container.getBoundingClientRect().left-theThing.clientWidth/2;
+        var yPos=e.clientY-container.getBoundingClientRect().top-theThing.clientHeight/2;
+        theThing.style.left=xPos+'px';
+        theThing.style.top =yPos+'px';
+    });
+</script>
+</body>
+</html>
